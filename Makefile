@@ -72,9 +72,9 @@ delete-project:
 kaggle:
 	cd data/raw && \
 	kaggle datasets download -d blastchar/telco-customer-churn && \
-	unzip archive.zip && \
+	unzip telco-customer-churn.zip && \
 	mv WA_Fn-UseC_-Telco-Customer-Churn.csv telco_customer.csv && \
-	rm -r archive.zip
+	rm -r telco-customer-churn.zip
 
 #################################################################################
 # Self Documenting Commands                                                     #
