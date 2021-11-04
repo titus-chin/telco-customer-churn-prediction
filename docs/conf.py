@@ -254,7 +254,7 @@ texinfo_documents = [
         "Telco Customer Churn Prediction Documentation",
         "Titus Chin Jun Hong",
         "Telco Customer Churn Prediction",
-        "The purpose of this project is to predict whether or not a Telco customer will churn based on their usage and subscription.",
+        "The purpose of this project is to predict whether or not a telco customer will churn based on historical customer usage and subscription data.",
         "Miscellaneous",
     ),
 ]

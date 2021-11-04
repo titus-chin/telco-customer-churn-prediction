@@ -1,5 +1,5 @@
 # Telco Customer Churn Prediction
-> The purpose of this project is to predict whether or not a Telco customer will churn based on their usage and subscription. Web app/Dashboard can be found [here]().
+> The purpose of this project is to predict whether or not a telco customer will churn based on historical customer usage and subscription data. Web app can be found [here]().
 #### -- Project Status: Active
 
 ## Table of Contents
@@ -54,7 +54,7 @@
     |
     ├── activate.sh        <- Shell script to activate the virtual environment
     |
-    ├── app.py             <- Script to create a web app / dashboard
+    ├── app.py             <- Script to create a web app
     |
     ├── requirements.txt   <- The requirements file for reproducing the analysis environment
     |
@@ -64,44 +64,33 @@
 
 ## Methods Used
 - Logistic Regression
-- Web Scraping
-- Method 3
+- K-Nearest Neighbor (KNN)
+- Support Vector Machine (SVC)
+- Decision Tree
+- Random Forest
 
 ## Technologies
 - Python - version 3.8.10
-    - Scrapy - version 1.0
-    - Pandas - version 2.0
+    - Pandas - version 1.3.4
+    - Scikit-learn - version 1.0.1
 - GNU Make - version 4.2.1
 - Streamlit Cloud
 - Weights & Biases
 - AWS S3
-- Tech 6 - version 3.0
 
 ## Project Description
-- intro
-    - Background? Problem statement?
-    - What motivate you? What you want to learn?
-    - What is the purpose of your project?
-    - ML problem framing? Given blah blah, predict blah blah?
-- data
-    - Data source? How to get the data?
-    - Data description?
-    - Data dictionary can be found [here](references/data_dictionary.md).
-- Experiment setup
-    - Selected evaluation metrics?
-    - train test split method? k-fold cross validation? percentage split?
-    - which packages to create models? scikit-learn? keras?
-    - Baseline classifer? Other models should perform better than baseline classifier.
-    - how many models? What are them?
-    - How to tune the model? Grid search? random search? wandb? Model summary can be found [here](models/model_summary.md).
-    - Best model is chosen based on evaluation metrics.
+Customer churn is used to describe the loss of customers by a company. Ideally, employers would like to see 0% churn rate in their companies but it's impossible due to tons of competitors out there. To compensate the revenue loss because of customer churn, marketing teams will need to try their best to attract new customers. However, research shows that it often costs more to gain new customers than retaining existing customers. Therefore, customer churn prediction becomes very important to every company. After the customers at risk of churning have been identified, the next step is to strategize the marketing actions necessary to increase the chances of the churn-probable customers remaining a customer. In terms of feasibility, since many companies now use a subscription-based business model for their businesses, they could easily use historical customer usage or subscription data to predict customer churn. The purpose of this project is to predict whether or not a telco customer will churn based on historical customer usage and subscription data.
+
+The dataset can be obtained from [Kaggle](https://www.kaggle.com/blastchar/telco-customer-churn). The telco customer churn data contains information about a telco company that provided home phone and internet services to 7043 customers. It indicates which customers have left, stayed, or signed up for their services. Some customer account info and demographic info also included in the dataset. Data cleaning and feature selection are performed before feeding the data into machine learning models. Data dictionary can be found [here](references/data_dictionary.md).
+
+There's only 26.5% of customer churn in the dataset, so the dataset is imbalance. The evaluation metric selected for this project is recall. Recall tells us how many percent of the actual customer churn is correctly classified. This evaluation metric is suitable because we don't want to miss any customer that are likely to stop using our services, so we could strategize the marketing actions necessary to retain them. The dataset is splitted into 80% training set and 20% testing set, and 5-fold cross validation is used in hyperparameters tuning. Scikit-learn package is used to create the machine learning models. DummyClassifier is created as a baseline classifier, meaning that the other machine learning models should be performed better than it. 5 machine learning models are created to predict customer churn which are LogisticRegression, KNeighborsClassifier, SVC, DecisionTreeClassifier and RandomForestClassifier. Grid search is used to tune the hyperparameters of each model, and Weights & Biases is used to track the hyperparameters tuning. Model summary can be found [here](models/model_summary.md). The best model is chosen based on the evaluation metrics - recall. After that, a web app is created to demonstrate how to use the best machine learning model to predict customer churn. Streamlit is used to create the web app while AWS S3 as its data storage.
 
 ## Results
 - What is the best performing model? Why?
 - Interpretation of results?
 - Discussion? Conclusion?
 - Improvement?
-- Outcome of the project? [Web app/Dashboard](link)
+- Outcome of the project? [Web app](link)
 
 ## Getting Started
 Follow [these instructions](references/getting_started.md) to reproduce this project.
