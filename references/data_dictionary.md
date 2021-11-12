@@ -27,14 +27,13 @@ This is raw dataset downloaded from [Kaggle](https://www.kaggle.com/blastchar/te
 | TotalCharges              | object      | The total amount charged to the customer since subscription                   |
 | Churn                     | object      | Whether the customer churned or not (Yes, No)                                 |
 
-## 2. telco_customer_processed.csv
-This is processed dataset. It has 5,919 instances and 6 attributes.
+## 2. telco_customer_cleaned.csv
+This is transformed dataset after data cleaning. It has 7,043 instances and 19 attributes. All categorical features are then being one-hot encoded.
 
 | Attributes                | Data Types  | Descriptions                                                                  |
 | ------------------------- | ------------| -----------------------------------------------------------------------------| 
-| customerID                | object      | Customer ID                                                                   |
 | gender                    | object      | Whether the customer is a male or a female (Male, Female)                     |
-| SeniorCitizen             | int64       | Whether the customer is a senior citizen or not (1, 0)                        |
+| SeniorCitizen             | object      | Whether the customer is a senior citizen or not (Yes, No)                     |
 | Partner                   | object      | Whether the customer has a partner or not (Yes, No)                           |
 | Dependents                | object      | Whether the customer has dependents or not (Yes, No)                          |
 | tenure                    | int64       | Number of months the customer has stayed with the company                     |
@@ -51,5 +50,4 @@ This is processed dataset. It has 5,919 instances and 6 attributes.
 | PaperlessBilling          | object      | Whether the customer has paperless billing or not (Yes, No)                   |
 | PaymentMethod             | object      | The customer’s payment method (Electronic check, Mailed check, Bank transfer (automatic), Credit card (automatic)) |
 | MonthlyCharges            | float64     | The amount charged to the customer monthly                                    |
-| TotalCharges              | object      | The total amount charged to the customer since subscription                   |
-| Churn                     | object      | Whether the customer churned or not (Yes, No)                                 |
+| Churn                     | object      | Whether the customer churned or not (1, 0)                                    |

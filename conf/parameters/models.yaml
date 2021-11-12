@@ -1,0 +1,187 @@
+general_config:
+  x_train: x_train.csv
+  y_train: y_train.csv
+  x_test: x_test.csv
+  y_test: y_test.csv
+  cv: 5
+  metric: recall
+  log_metric: validation_recall
+  scaler_file: scaler.save
+
+dummy_classifier:
+  group: DummyClassifier
+  model_file: dummy_classifier.sav
+
+  default_config:
+    random_state: 0
+    strategy: uniform
+
+  sweep_config:
+    method: grid
+    parameters:
+      random_state:
+        values: [0]
+      strategy:
+        values: [stratified, most_frequent, prior, uniform]
+
+  best_config:
+    random_state: 0
+    strategy: uniform
+
+logistic_regression:
+  group: LogisticRegression
+  model_file: logistic_regression.sav
+
+  default_config:
+    random_state: 0
+    c: 0.1
+    solver: lbfgs
+    n_jobs: -1
+    class_weight: balanced
+
+  sweep_config:
+    method: grid
+    parameters:
+      random_state:
+        values: [0]
+      c:
+        values: [0.1, 1, 10]
+      solver:
+        values: [lbfgs, liblinear]
+      n_jobs:
+        values: [-1]
+      class_weight:
+        values: [balanced]
+
+  best_config:
+    random_state: 0
+    c: 0.1
+    solver: lbfgs
+    n_jobs: -1
+    class_weight: balanced
+
+knn:
+  group: KNeighborsClassifier
+  model_file: knn.sav
+
+  default_config:
+    n_neighbors: 5
+    p: 1
+    weights: uniform
+    n_jobs: -1
+
+  sweep_config:
+    method: grid
+    parameters:
+      n_neighbors:
+        values: [5, 11, 21, 41]
+      p:
+        values: [1, 2]
+      n_jobs:
+        values: [-1]
+      weights:
+        values: [uniform, distance]
+
+  best_config:
+    n_neighbors: 41
+    p: 1
+    weights: uniform
+    n_jobs: -1
+
+svc:
+  group: SVC
+  model_file: svc.sav
+
+  default_config:
+    c: 0.1
+    kernel: linear
+    degree: 2
+    gamma: scale
+    class_weight: balanced
+
+  sweep_config:
+    method: grid
+    parameters:
+      c:
+        values: [0.1, 1, 10]
+      kernel:
+        values: [linear, poly, rbf, sigmoid]
+      degree:
+        values: [2, 3, 4]
+      gamma:
+        values: [scale, auto]
+      class_weight:
+        values: [balanced]
+
+  best_config:
+    c: 0.1
+    kernel: linear
+    class_weight: balanced
+
+decision_tree:
+  group: DecisionTreeClassifier
+  model_file: decision_tree.sav
+
+  default_config:
+    criterion: gini
+    splitter: best
+    max_depth: 3
+    random_state: 0
+    class_weight: balanced
+
+  sweep_config:
+    method: grid
+    parameters:
+      criterion:
+        values: [gini, entropy]
+      splitter:
+        values: [best, random]
+      max_depth:
+        values: [3, 5, 7, 9]
+      random_state:
+        values: [0]
+      class_weight:
+        values: [balanced]
+
+  best_config:
+    criterion: gini
+    splitter: random
+    max_depth: 5
+    random_state: 0
+    class_weight: balanced
+
+random_forest:
+  group: RandomForestClassifier
+  model_file: random_forest.sav
+
+  default_config:
+    n_estimators: 50
+    criterion: gini
+    max_depth: 3
+    n_jobs: -1
+    random_state: 0
+    class_weight: balanced
+
+  sweep_config:
+    method: grid
+    parameters:
+      n_estimators:
+        values: [50, 100, 200]
+      criterion:
+        values: [gini, entropy]
+      max_depth:
+        values: [3, 5, 7, 9]
+      n_jobs:
+        values: [-1]
+      random_state:
+        values: [0]
+      class_weight:
+        values: [balanced, balanced_subsample]
+
+  best_config:
+    n_estimators: 200
+    criterion: entropy
+    max_depth: 3
+    n_jobs: -1
+    random_state: 0
+    class_weight: balanced

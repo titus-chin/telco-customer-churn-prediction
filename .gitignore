@@ -78,9 +78,12 @@ target/
 
 # exclude data from source control by default
 # /data/external/
-# /data/interim/
-# /data/processed/
-/data/raw/telco_customer.csv
+# /data/interim/telco_customer_cleaned.csv
+# /data/processed/x_train.csv
+# /data/processed/y_train.csv
+# /data/processed/x_test.csv
+# /data/processed/y_test.csv
+# /data/raw/telco_customer.csv
 
 # Mac OS-specific storage files
 .DS_Store

@@ -1,1 +1,23 @@
 raw_data: telco_customer.csv
+
+interim_data: telco_customer_cleaned.csv
+
+columns_to_drop:
+  - customerID
+  - TotalCharges
+
+columns_to_change:
+  SeniorCitizen:
+    old_values:
+      - 0
+      - 1
+    new_values:
+      - "No"
+      - "Yes"
+  Churn:
+    old_values:
+      - "No"
+      - "Yes"
+    new_values:
+      - 0
+      - 1

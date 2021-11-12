@@ -8,70 +8,72 @@ Hyperparameters to be tuned for each model.
 | DummyClassifier          | random_state                        | 0                                      |
 |                          | strategy                            | stratified, most_frequent, prior, uniform |
 | LogisticRegression       | random_state                        | 0                                      |
-|                          | C                                   | 0.0001, 0.001, 0.01, 0.1, 1, 10, 100   |
-|                          | solver                              | newton-cg, lbfgs, liblinear, sag, saga |
+|                          | C                                   | 0.1, 1, 10                             |
+|                          | solver                              | lbfgs, liblinear                       |
 |                          | n_jobs                              | -1                                     |
-| KNeighborsClassifier     | n_neighbors                         | 5, 11, 21, 41, 81, 161, 321            ||                          | weights                             | uniform, distance                      |
-|                          | algorithm                           | auto, ball_tree, kd_tree, brute        |
+|                          | class_weight                        | balanced                               |
+| KNeighborsClassifier     | n_neighbors                         | 5, 11, 21, 41                          ||                          | weights                             | uniform, distance                      |
 |                          | p                                   | 1, 2                                   |
 |                          | n_jobs                              | -1                                     |
-| SVC                      | C                                   | 0.0001, 0.001, 0.01, 0.1, 1, 10, 100   |
+| SVC                      | C                                   | 0.1, 1, 10                             |
 |                          | kernel                              | linear, poly, rbf, sigmoid             |
-|                          | degree                              | 2, 3, 4, 5, 6, 7                       |
+|                          | degree                              | 2, 3, 4                                |
 |                          | gamma                               | scale, auto                            |
-|                          | n_jobs                              | -1                                     |
+|                          | class_weight                        | balanced                               |
 | DecisionTreeClassifier   | criterion                           | gini, entropy                          |
 |                          | splitter                            | best, random                           |
-|                          | max_depth                           | None, 3, 5, 7, 9, 11, 13, 15, 17, 19   |
+|                          | max_depth                           | 3, 5, 7, 9                             |
 |                          | random_state                        | 0                                      |
-| RandomForestClassifier   | n_estimators                        | 10, 50, 100, 200                       |
+|                          | class_weight                        | balanced                               |
+| RandomForestClassifier   | n_estimators                        | 50, 100, 200                           |
 |                          | criterion                           | gini, entropy                          |
-|                          | max_depth                           | None, 3, 5, 7, 9, 11, 13, 15, 17, 19   |
+|                          | max_depth                           | 3, 5, 7, 9                             |
 |                          | n_jobs                              | -1                                     |
 |                          | random_state                        | 0                                      |
+|                          | class_weight                        | balanced, balanced_subsample           |
 
 ## Best Hyperparameters of Each Model
-Best hyperparameters of each model based on validation recall. Details of hyperparameters tuning can be found on [Weights & Biases dashboard]().
+Best hyperparameters of each model based on validation recall. Details of hyperparameters tuning can be found on [Weights & Biases dashboard](https://wandb.ai/titus-chin/telco-customer-churn-prediction/reports/Telco-Customer-Churn-Prediction--VmlldzoxMjE2NzE1).
 
 | Models                   | Best Hyperparameters                | Validation Recall                      |
 | ------------------------ | ----------------------------------- | -------------------------------------- |
-| DummyClassifier          | random_state = 0                    | x%                                     |
-|                          | strategy =                          |                                        |
-| LogisticRegression       | random_state = 0                    | x%                                     |
-|                          | C =                                 |                                        |
-|                          | solver =                            |                                        |
+| DummyClassifier          | random_state = 0                    | 50.23%                                 |
+|                          | strategy = uniform                  |                                        |
+| LogisticRegression       | random_state = 0                    | 79.55%                                 |
+|                          | C = 0.1                             |                                        |
+|                          | solver = lbfgs                      |                                        |
 |                          | n_jobs = -1                         |                                        |
-| KNeighborsClassifier     | n_neighbors =                       | x%                                     |
-|                          | weights =                           |                                        |
-|                          | algorithm =                         |                                        |
-|                          | p =                                 |                                        |
+|                          | class_weight = balanced             |                                        |
+| KNeighborsClassifier     | n_neighbors = 41                    | 59.03%                                 |
+|                          | weights = uniform                   |                                        |
+|                          | p = 1                               |                                        |
 |                          | n_jobs = -1                         |                                        |
-| SVC                      | C =                                 | x%                                     |
-|                          | kernel =                            |                                        |
-|                          | degree =                            |                                        |
-|                          | gamma =                             |                                        |
-|                          | n_jobs = -1                         |                                        |
-| DecisionTreeClassifier   | criterion =                         | x%                                     |
-|                          | splitter =                          |                                        |
-|                          | max_depth =                         |                                        |
+| SVC                      | C = 0.1                             | 83.61%                                 |
+|                          | kernel = linear                     |                                        |
+|                          | class_weight = balanced             |                                        |
+| DecisionTreeClassifier   | criterion = gini                    | 79.28%                                 |
+|                          | splitter = random                   |                                        |
+|                          | max_depth = 5                       |                                        |
 |                          | random_state = 0                    |                                        |
-| RandomForestClassifier   | n_estimators =                      | x%                                     |
-|                          | criterion =                         |                                        |
-|                          | max_depth =                         |                                        |
+|                          | class_weight = balanced             |                                        |
+| RandomForestClassifier   | n_estimators = 200                  | 81.55%                                 |
+|                          | criterion = entropy                 |                                        |
+|                          | max_depth = 3                       |                                        |
 |                          | n_jobs = -1                         |                                        |
 |                          | random_state = 0                    |                                        |
+|                          | class_weight = balanced             |                                        |
 
 ## Performance of Each Model
 Train each model with its best hyperparameters, and get its training and testing recall.
 
 | Models                   | Training Recall                     | Testing Recall                         |
 | ------------------------ | ----------------------------------- | -------------------------------------- |
-| DummyClassifier          | x%                                  | x%                                     |
-| LogisticRegression       | x%                                  | x%                                     |
-| KNeighborsClassifier     | x%                                  | x%                                     |
-| SVC                      | x%                                  | x%                                     |
-| DecisionTreeClassifier   | x%                                  | x%                                     |
-| RandomForestClassifier   | x%                                  | x%                                     |
+| DummyClassifier          | 51.17%                              | 48.64%                                 |
+| LogisticRegression       | 79.81%                              | 78.26%                                 |
+| KNeighborsClassifier     | 59.96%                              | 58.70%                                 |
+| SVC                      | 83.61%                              | 81.79%                                 |
+| DecisionTreeClassifier   | 82.48%                              | 76.63%                                 |
+| RandomForestClassifier   | 81.68%                              | 80.16%                                 |
 
 ## Best Performing Model
-x is the best performing model because...
+SVC is the best performing model because it has the highest testing recall - 81.79%.

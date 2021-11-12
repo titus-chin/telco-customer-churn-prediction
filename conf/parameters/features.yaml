@@ -1,0 +1,15 @@
+interim_data: telco_customer_cleaned.csv
+
+x_train: x_train.csv
+
+y_train: y_train.csv
+
+x_test: x_test.csv
+
+y_test: y_test.csv
+
+scaler_file: scaler.save
+
+target_attribute: Churn
+
+test_size: 0.2
