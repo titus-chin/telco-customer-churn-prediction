@@ -14,6 +14,28 @@ def main(
     target_attribute,
     test_size,
 ):
+    """Pipeline to build features from interim data, and produce
+    x_train, y_train, x_test, y_test datasets.
+
+    Parameters
+    ----------
+    interim_data_path : pathlib.PosixPath
+        Path to interim data
+    x_train_path : pathlib.PosixPath
+        Path to x_train data
+    y_train_path : pathlib.PosixPath
+        Path to y_train data
+    x_test_path : pathlib.PosixPath
+        Path to x_test data
+    y_test_path : pathlib.PosixPath
+        Path to y_test data
+    scaler_filepath : pathlib.PosixPath
+        Path to MinMaxScaler save object
+    target_attribute : str
+        Target attribute of machine learning models
+    test_size : float
+        Float specifying testing size
+    """
     data = pd.read_csv(interim_data_path)
     features = data.drop(target_attribute, axis=1)
     target = data[target_attribute]

@@ -9,6 +9,19 @@ def main(
     columns_to_drop,
     columns_to_change,
 ):
+    """Pipeline to produce interim data from raw data.
+
+    Parameters
+    ----------
+    raw_data_path : pathlib.PosixPath
+        Path to raw data
+    interim_data_path : pathlib.PosixPath
+        Path to interim data
+    columns_to_drop : list
+        List of columns to drop
+    columns_to_change : dict
+        Dictionary containing columns to change and values to replace
+    """
     data = pd.read_csv(raw_data_path)
     drop_columns(data, columns_to_drop)
     change_values(data, columns_to_change)

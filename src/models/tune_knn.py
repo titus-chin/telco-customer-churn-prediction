@@ -7,6 +7,9 @@ import os
 
 
 def main():
+    """Pipeline to tune KNN classifier, and record the result
+    to Weights & Biases dashboard.
+    """
     wandb.init(group=group, config=default_config)
     model = KNeighborsClassifier(
         n_neighbors=wandb.config.n_neighbors,

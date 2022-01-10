@@ -11,6 +11,31 @@ import os
 def main(
     x_train, y_train, x_test, y_test, name, best_config, metric, scaler, model_filepath
 ):
+    """Evaluate the performance of best dummy classifier,
+    record the performance to Weights & Biases dashboard, and save
+    the model object.
+
+    Parameters
+    ----------
+    x_train : pd.DataFrame
+        DataFrame containing training features
+    y_train : pd.DataFrame
+        DataFrame containing training target
+    x_test : pd.DataFrame
+        DataFrame containing testing features
+    y_test : pd.DataFrame
+        DataFrame containig testing target
+    name : str
+        Group in Weights and Biases dashboard
+    best_config : dict
+        Dictionary specifying the best model configuration
+    metric : str
+        Evaluation metric to evaluate model performance
+    scaler : sklearn.preprocessing._data.MinMaxScaler
+        Fitted MinMaxScaler object
+    model_filepath : pathlib.PosixPath
+        Path to model sav object
+    """
     wandb.init(name=name, group="Model Performance", config=best_config)
     model = DummyClassifier(
         random_state=wandb.config.random_state, strategy=wandb.config.strategy

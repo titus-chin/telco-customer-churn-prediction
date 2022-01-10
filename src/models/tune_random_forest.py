@@ -7,6 +7,9 @@ import os
 
 
 def main():
+    """Pipeline to tune random forest classifier, and record the result
+    to Weights & Biases dashboard.
+    """
     wandb.init(group=group, config=default_config)
     model = RandomForestClassifier(
         n_estimators=wandb.config.n_estimators,

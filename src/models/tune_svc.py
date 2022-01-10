@@ -7,6 +7,9 @@ import os
 
 
 def main():
+    """Pipeline to tune SVC classifier, and record the result
+    to Weights & Biases dashboard.
+    """
     wandb.init(group=group, config=default_config)
     model = SVC(
         C=wandb.config.c,

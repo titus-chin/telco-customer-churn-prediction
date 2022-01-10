@@ -7,6 +7,9 @@ import os
 
 
 def main():
+    """Pipeline to tune dummy classifier, and record the result
+    to Weights & Biases dashboard.
+    """
     wandb.init(group=group, config=default_config)
     model = DummyClassifier(
         random_state=wandb.config.random_state, strategy=wandb.config.strategy

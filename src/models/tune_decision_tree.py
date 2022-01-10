@@ -7,6 +7,9 @@ import os
 
 
 def main():
+    """Pipeline to tune decision tree classifier, and record the result
+    to Weights & Biases dashboard.
+    """
     wandb.init(group=group, config=default_config)
     model = DecisionTreeClassifier(
         criterion=wandb.config.criterion,
